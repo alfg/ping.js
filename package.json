@@ -1,0 +1,18 @@
+{
+  "name": "ping.js",
+  "description": "Ping Utilities with Javascript",
+  "version": "0.0.1",
+  "author": "Alf <alf.g.jr@gmail.com>",
+  "devDependencies": {
+    "grunt": "~0.4.5",
+    "grunt-cli": "~0.1.13",
+    "grunt-contrib-concat": "~0.4.0",
+    "grunt-contrib-jshint": "~0.10.0",
+    "grunt-contrib-uglify": "~0.4.0"
+  },
+  "scripts": {
+    "test": "grunt travis --verbose"
+  },
+  "keywords": ["javascript", "ping", "utilities"],
+  "repository": "git://github.com/alfg/ping.js"
+}

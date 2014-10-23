@@ -1,0 +1,29 @@
+{
+	"name": "ping.js",
+	"title": "ping.js",
+	"description": "Ping Utilities in Javascript",
+    "keywords": ["javascript", "ping", "utilities"],
+	"version": "0.0.1",
+	"author": {
+		"name": "Alfred Gutierrez",
+		"email": "alf.g.jr@gmail.com",
+		"url": "https://github.com/alfg"
+	},
+	"maintainers": [
+		{
+			"name": "Alfred Gutierrez",
+			"email": "alf.g.jr@gmail.com",
+			"url": "https://github.com/alfg"
+		}
+	],
+	"licenses": [
+		{
+			"type": "MIT",
+			"url": "http://alfg.mit-license.org/"
+		}
+	],
+	"bugs": "https://github.com/alfg/ping.js/issues",
+	"homepage": "http://github.com/alfg/ping.js",
+	"docs": "https://github.com/alfg/ping.js#readme",
+	"download": "https://github.com/alfg/ping.js/archive/master.zip"
+}

@@ -1,3 +1,11 @@
+/*
+ *  ping.js - v0.0.1
+ *  Ping Utilities in Javascript
+ *  http://github.com/alfg/ping.js
+ *
+ *  Made by Alfred Gutierrez
+ *  Under MIT License
+ */
 /**
  * Creates a Ping instance.
  * @returns {Ping}

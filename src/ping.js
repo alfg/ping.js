@@ -1,32 +1,32 @@
+/**
+ * Creates a Ping instance.
+ * @returns {Ping}
+ * @constructor
+ */
+var Ping = function() {
 
-function ping(ip, callback) {
+};
 
-    if (!this.inUse) {
-        this.status = 'unchecked';
-        this.inUse = true;
-        this.callback = callback;
-        this.ip = ip;
-        var _that = this;
-        this.img = new Image();
-        this.img.onload = function () {
-            _that.inUse = false;
-            _that.callback('responded');
+Ping.prototype.ping = function(source, callback) {
+    this.callback = callback;
+    this.img = new Image();
+    this.start = new Date().getTime();
 
-        };
-        this.img.onerror = function (e) {
-            if (_that.inUse) {
-                _that.inUse = false;
-                _that.callback('responded', e);
-            }
+    this.img.onload = function() {
+        console.log("loaded website");
+    };
 
-        };
-        this.start = new Date().getTime();
-        this.img.src = "http://" + ip;
-        this.timer = setTimeout(function () {
-            if (_that.inUse) {
-                _that.inUse = false;
-                _that.callback('timeout');
-            }
-        }, 1500);
-    }
-}
+    this.img.onerror = function (e) {
+        console.log(e);
+        console.log("loaded website");
+        if (typeof callback == 'function' && callback()) {
+            callback('rseponded', e);
+        }
+    };
+    this.img.src = "http://" + source;
+};
+
+function Callback() {
+    "sample callback"
+    console.log("called back!");
+};

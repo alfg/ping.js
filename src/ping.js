@@ -4,25 +4,37 @@
  * @constructor
  */
 var Ping = function() {
+    this._version = "0.0.1";
+
+    this.img = new Image();
 
 };
 
+/**
+ *
+ * @param source
+ * @param callback
+ */
 Ping.prototype.ping = function(source, callback) {
-    this.callback = callback;
-    this.img = new Image();
-    this.start = new Date().getTime();
+//    var _that = this;
+
+    var start = new Date();
+    var time = 0;
 
     this.img.onload = function() {
         console.log("loaded website");
     };
 
     this.img.onerror = function (e) {
-        console.log(e);
-        console.log("loaded website");
+        var pong = new Date() - start;
+        time = pong;
+
+        console.log(pong);
         if (typeof callback === "function" && callback()) {
-            callback("rseponded", e);
+            callback("responded", e);
         }
     };
-    this.img.src = "http://" + source;
+
+    this.img.src = "//" + source;
 };
 

@@ -2,6 +2,8 @@
 
 Ping.js is a small and simple Javascript library to ping response times to servers in pure Javascript! This is useful for when you want to display realtime ping times on a status page which are relative to the user.
 
+JS Fiddle Example: http://jsfiddle.net/yLc8gnkr/
+
 ## Usage
 
 ```javascript

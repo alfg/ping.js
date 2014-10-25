@@ -5,33 +5,31 @@
  */
 var Ping = function() {
     this._version = "0.0.1";
-
-    this.img = new Image();
-
 };
 
 /**
- *
- * @param source
- * @param callback
+ * Pings source and triggers a callback when completed.
+ * @param source Source of the website or server.
+ * @param callback Callback function to trigger when compelted.
  */
 Ping.prototype.ping = function(source, callback) {
-//    var _that = this;
+    this.img = new Image();
 
     var start = new Date();
+
     var time = 0;
 
     this.img.onload = function() {
         console.log("loaded website");
     };
 
-    this.img.onerror = function (e) {
+    this.img.onerror = function (data) {
         var pong = new Date() - start;
         time = pong;
-
         console.log(pong);
-        if (typeof callback === "function" && callback()) {
-            callback("responded", e);
+
+        if (typeof callback === "function") {
+            callback(pong);
         }
     };
 

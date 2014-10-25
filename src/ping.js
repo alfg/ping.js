@@ -23,7 +23,7 @@ Ping.prototype.ping = function(source, callback) {
         console.log("loaded website");
     };
 
-    this.img.onerror = function (data) {
+    this.img.onerror = function () {
         var pong = new Date() - start;
         time = pong;
         console.log(pong);

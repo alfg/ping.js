@@ -4,6 +4,8 @@ Ping.js is a small and simple Javascript library to ping response times to serve
 
 JS Fiddle Example: http://jsfiddle.net/alfg/sr0tpn4x/
 
+Example in jQuery: http://jsfiddle.net/alfg/xjqbvt2o/
+
 ## Usage
 
 ```javascript

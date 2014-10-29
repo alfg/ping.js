@@ -18,7 +18,7 @@ var Ping = function() {
 /**
  * Pings source and triggers a callback when completed.
  * @param source Source of the website or server.
- * @param callback Callback function to trigger when compelted.
+ * @param callback Callback function to trigger when completed.
  */
 Ping.prototype.ping = function(source, callback) {
     this.img = new Image();
@@ -28,10 +28,17 @@ Ping.prototype.ping = function(source, callback) {
     var time = 0;
 
     this.img.onload = function() {
-        console.log("loaded website");
+        pingCheck();
     };
 
     this.img.onerror = function () {
+        pingCheck();
+    };
+
+    /**
+     * Times ping and triggers callback.
+     */
+    var pingCheck = function() {
         var pong = new Date() - start;
         time = pong;
         console.log(pong);
@@ -41,6 +48,6 @@ Ping.prototype.ping = function(source, callback) {
         }
     };
 
-    this.img.src = "//" + source;
+    this.img.src = "//" + source + "/?" + new Date().getTime(); // Trigger image load with cache buster
 };
 

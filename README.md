@@ -11,8 +11,8 @@ Example in jQuery: http://jsfiddle.net/alfg/xjqbvt2o/
 ```javascript
 var p = new Ping();
  
-p.ping("guildbit", function(data) {
-  document.getElementById("ping-guildbit").innerHTML = data;
+p.ping("github.com", function(data) {
+  document.getElementById("ping-github").innerHTML = data;
 });
 ```
 

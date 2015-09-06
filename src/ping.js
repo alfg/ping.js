@@ -33,7 +33,6 @@ Ping.prototype.ping = function(source, callback) {
     var pingCheck = function() {
         var pong = new Date() - start;
         time = pong;
-        console.log(pong);
 
         if (typeof callback === "function") {
             callback(pong);

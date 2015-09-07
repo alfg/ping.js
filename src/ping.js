@@ -16,30 +16,19 @@ Ping.prototype.ping = function(source, callback) {
     this.img = new Image();
 
     var start = new Date();
-
-    var time = 0;
-
-    this.img.onload = function() {
-        pingCheck();
-    };
-
-    this.img.onerror = function () {
-        pingCheck();
-    };
+    this.img.onload = this.img.onerror = pingCheck;
 
     /**
      * Times ping and triggers callback.
      */
-    var pingCheck = function() {
+    function pingCheck() {
         var pong = new Date() - start;
-        time = pong;
-        console.log(pong);
 
         if (typeof callback === "function") {
             callback(pong);
         }
-    };
+    }
 
-    this.img.src = "//" + source + "/?" + new Date().getTime(); // Trigger image load with cache buster
+    this.img.src = "//" + source + "/?" + (+new Date()); // Trigger image load with cache buster
 };
 

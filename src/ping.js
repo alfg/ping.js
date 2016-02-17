@@ -12,16 +12,21 @@ var Ping = function() {
  * @param source Source of the website or server.
  * @param callback Callback function to trigger when completed.
  */
-Ping.prototype.ping = function(source, callback) {
+Ping.prototype.ping = function(source, callback, timeout) {
     this.img = new Image();
+    timeout = timeout || 0;
+    var timer;
 
     var start = new Date();
     this.img.onload = this.img.onerror = pingCheck;
+
+		if (timeout) timer = setTimeout(pingCheck,timeout);
 
     /**
      * Times ping and triggers callback.
      */
     function pingCheck() {
+    		if (timer) clearTimeout(timer);
         var pong = new Date() - start;
 
         if (typeof callback === "function") {
@@ -31,4 +36,3 @@ Ping.prototype.ping = function(source, callback) {
 
     this.img.src = "//" + source + "/?" + (+new Date()); // Trigger image load with cache buster
 };
-

@@ -20,7 +20,7 @@ Ping.prototype.ping = function(source, callback, timeout) {
 
     var start = new Date();
     this.img.onload = this.img.onerror = pingCheck;
-    if (timeout) timer = setTimeout(pingCheck,timeout);
+    if (timeout) timer = setTimeout(pingCheck, timeout);
 
     /**
      * Times ping and triggers callback.

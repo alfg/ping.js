@@ -30,7 +30,7 @@ Creates a ping request to the `source`.
 
 `callback` Callback function which returns the response time in milliseconds.
 
-`timeout` Set a timeout in milliseconds.
+`timeout` Optional - Set a timeout in milliseconds.
 
 ## Notes
 

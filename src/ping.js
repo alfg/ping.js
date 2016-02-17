@@ -11,6 +11,7 @@ var Ping = function() {
  * Pings source and triggers a callback when completed.
  * @param source Source of the website or server.
  * @param callback Callback function to trigger when completed.
+ * @param timeout Optional number of milliseconds to wait before aborting.
  */
 Ping.prototype.ping = function(source, callback, timeout) {
     this.img = new Image();

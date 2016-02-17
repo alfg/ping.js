@@ -22,13 +22,15 @@ p.ping("github.com", function(data) {
 var p = new Ping();
 ```
 
-### p.ping(source, callback)
+### p.ping(source, callback, timeout)
 
 Creates a ping request to the `source`. 
 
 `source` IP address or website URL.
 
 `callback` Callback function which returns the response time in milliseconds.
+
+`timeout` Set a timeout in milliseconds.
 
 ## Notes
 

@@ -14,7 +14,10 @@ module.exports = function(grunt) {
 				" *\n" +
 				" *  Made by <%= pkg.author.name %>\n" +
 				" *  Under <%= pkg.licenses[0].type %> License\n" +
-				" */\n"
+				" */\n",
+			bannerMin: "/* " +
+				"<%= pkg.title || pkg.name %> - v<%= pkg.version %>" +
+				" <%= pkg.homepage %> */\n" 
 		},
 
 		// Concat definitions
@@ -43,7 +46,7 @@ module.exports = function(grunt) {
 				dest: "dist/ping.min.js"
 			},
 			options: {
-				banner: "<%= meta.banner %>"
+				banner: "<%= meta.bannerMin %>"
 			}
 		}
 	});
@@ -53,6 +56,5 @@ module.exports = function(grunt) {
 	grunt.loadNpmTasks("grunt-contrib-uglify");
 
 	grunt.registerTask("default", ["jshint", "concat", "uglify"]);
-	grunt.registerTask("travis", ["jshint"]);
 
 };

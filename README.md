@@ -10,8 +10,8 @@ Example in jQuery: http://jsfiddle.net/alfg/xjqbvt2o/
 
 ```javascript
 var p = new Ping();
- 
-p.ping("github.com", function(data) {
+
+p.ping("https://github.com", function(data) {
   document.getElementById("ping-github").innerHTML = data;
 });
 ```
@@ -24,13 +24,30 @@ var p = new Ping();
 
 ### p.ping(source, callback, timeout)
 
-Creates a ping request to the `source`. 
+Creates a ping request to the `source`.
 
-`source` IP address or website URL.
+`source` IP address or website URL, including protocol and port (optional). Example: `https://example.com:8080`
 
 `callback` Callback function which returns the response time in milliseconds.
 
 `timeout` Optional - Set a timeout in milliseconds.
+
+## Development
+
+Install project:
+```
+git clone https://github.com/alfg/ping.js.git
+cd ping.js
+npm install
+npm install -g grunt-cli
+```
+
+Run grunt to build distribution files:
+```
+grunt
+```
+
+Open `demo/index.html` in a browser to test results.
 
 ## Notes
 

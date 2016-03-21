@@ -1,5 +1,5 @@
 /*
- *  ping.js - v0.0.1
+ *  ping.js - v0.1.0
  *  Ping Utilities in Javascript
  *  http://github.com/alfg/ping.js
  *
@@ -11,13 +11,11 @@
  * @returns {Ping}
  * @constructor
  */
-var Ping = function() {
-    this._version = "0.0.1";
-};
+var Ping = function() {};
 
 /**
  * Pings source and triggers a callback when completed.
- * @param source Source of the website or server.
+ * @param source Source of the website or server, including protocol and port.
  * @param callback Callback function to trigger when completed.
  * @param timeout Optional number of milliseconds to wait before aborting.
  */
@@ -42,5 +40,5 @@ Ping.prototype.ping = function(source, callback, timeout) {
         }
     }
 
-    this.img.src = "//" + source + "/?" + (+new Date()); // Trigger image load with cache buster
+    this.img.src = source + "/?" + (+new Date()); // Trigger image load with cache buster
 };

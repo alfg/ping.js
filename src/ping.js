@@ -17,9 +17,17 @@ Ping.prototype.ping = function(source, callback, timeout) {
     var timer;
 
     var start = new Date();
-    this.img.onload = this.img.onerror = pingCheck;
+    this.img.onload = pingCheck;
+    this.img.onerror = pingError;
     if (timeout) { timer = setTimeout(pingCheck, timeout); }
 
+    /**
+     * Does not resolve.
+     */
+    function pingError() {
+      callback("Error");
+    }
+    
     /**
      * Times ping and triggers callback.
      */
@@ -32,5 +40,5 @@ Ping.prototype.ping = function(source, callback, timeout) {
         }
     }
 
-    this.img.src = source + "/?" + (+new Date()); // Trigger image load with cache buster
+    this.img.src = source + "/favicon.ico?" + (+new Date()); // Trigger image load with cache buster
 };

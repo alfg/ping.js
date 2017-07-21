@@ -35,7 +35,8 @@ module.exports = function(grunt) {
 		jshint: {
 			files: ["src/ping.js"],
 			options: {
-				jshintrc: ".jshintrc"
+				jshintrc: ".jshintrc",
+				reporterOutput: ""
 			}
 		},
 

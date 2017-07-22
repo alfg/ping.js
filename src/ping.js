@@ -3,42 +3,42 @@
  * @returns {Ping}
  * @constructor
  */
-var Ping = function() {};
+var Ping = function(opt) {
+    this.opt = opt || {};
+    this.favicon = this.opt.favicon || "/favicon.ico";
+    this.timeout = this.opt.timeout || 0;
+};
 
 /**
  * Pings source and triggers a callback when completed.
  * @param source Source of the website or server, including protocol and port.
- * @param callback Callback function to trigger when completed.
+ * @param callback Callback function to trigger when completed. Returns error and ping value.
  * @param timeout Optional number of milliseconds to wait before aborting.
  */
-Ping.prototype.ping = function(source, callback, timeout) {
+Ping.prototype.ping = function(source, callback) {
     this.img = new Image();
-    timeout = timeout || 0;
     var timer;
 
     var start = new Date();
     this.img.onload = pingCheck;
-    this.img.onerror = pingError;
-    if (timeout) { timer = setTimeout(pingCheck, timeout); }
+    this.img.onerror = pingCheck;
+    if (this.timeout) { timer = setTimeout(pingCheck, this.timeout); }
 
-    /**
-     * Does not resolve.
-     */
-    function pingError() {
-      callback("Error");
-    }
-    
     /**
      * Times ping and triggers callback.
      */
-    function pingCheck() {
+    function pingCheck(e) {
         if (timer) { clearTimeout(timer); }
         var pong = new Date() - start;
 
         if (typeof callback === "function") {
-            callback(pong);
+            if (e.type === "error") {
+                console.error("error loading resource");
+                return callback("error", pong);
+            }
+            return callback(null, pong);
         }
     }
 
-    this.img.src = source + "/favicon.ico?" + (+new Date()); // Trigger image load with cache buster
+    this.img.src = source + this.favicon + "?" + (+new Date()); // Trigger image load with cache buster
 };

@@ -3,7 +3,7 @@
 	"title": "ping.js",
 	"description": "Ping Utilities in Javascript",
     "keywords": ["javascript", "ping", "utilities"],
-	"version": "0.1.2",
+	"version": "0.1.3",
 	"author": {
 		"name": "Alfred Gutierrez",
 		"email": "alf.g.jr@gmail.com",

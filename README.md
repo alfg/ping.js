@@ -1,5 +1,8 @@
 # Ping.js
 
+[![npm](https://img.shields.io/npm/v/ping.js.svg)](https://www.npmjs.com/package/ping.js)
+[![npm](https://img.shields.io/npm/dt/ping.js.svg)](https://www.npmjs.com/package/ping.js)
+
 Ping.js is a small and simple Javascript library to ping response times to servers in pure Javascript! This is useful for when you want to display realtime ping times on a status page which are relative to the user.
 
 JS Fiddle Example: http://jsfiddle.net/alfg/sr0tpn4x/

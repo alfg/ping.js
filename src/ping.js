@@ -32,12 +32,19 @@ Ping.prototype.ping = function(source, callback) {
         var pong = new Date() - start;
 
         if (typeof callback === "function") {
-            if (e.type === "error") {
-                console.error("error loading resource");
-                return callback("error", pong);
+
+            if (typeof callback === "function") {
+                if (typeof e === 'undefined' || typeof e.type === 'undefined') {
+                    console.error("timeout error");
+                    return callback("timeout", pong);
+                }
+                if (e.type === "error") {
+                    console.error("error loading resource");
+                    return callback("error", pong);
+                }
+                //return callback(null, pong); // commented to give out a more informative string
+                return callback("success", pong);
             }
-            return callback(null, pong);
-        }
     }
 
     this.img.src = source + this.favicon + "?" + (+new Date()); // Trigger image load with cache buster

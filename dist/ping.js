@@ -1,5 +1,5 @@
 /*
- *  ping.js - v0.1.3
+ *  ping.js - v0.2.1
  *  Ping Utilities in Javascript
  *  http://github.com/alfg/ping.js
  *

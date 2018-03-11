@@ -1,7 +1,7 @@
 {
   "name": "ping.js",
   "description": "Ping Utilities with Javascript",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "author": "Alf <alf.g.jr@gmail.com>",
   "main": "index.js",
   "devDependencies": {

@@ -42,3 +42,11 @@ Ping.prototype.ping = function(source, callback) {
 
     this.img.src = source + this.favicon + "?" + (+new Date()); // Trigger image load with cache buster
 };
+
+if (typeof exports !== "undefined") {
+    if (typeof module !== "undefined" && module.exports) {
+        module.exports = Ping;
+    }
+} else {
+    window.Ping = Ping;
+}

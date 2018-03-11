@@ -11,6 +11,8 @@ Example in jQuery: http://jsfiddle.net/alfg/xjqbvt2o/
 
 ## Usage
 
+* Download the distribution files in `dist` to your project.
+
 ```javascript
 var p = new Ping();
 
@@ -23,6 +25,18 @@ p.ping("https://github.com", function(err, data) {
   document.getElementById("ping-github").innerHTML = data;
 });
 ```
+
+or import as a module:
+
+```bash
+$ npm install ping.js
+```
+
+```javascript
+import Ping from 'ping.js';
+```
+
+See [demo/react-example](demo/react-example) for an example in React.
 
 ## API
 

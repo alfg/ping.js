@@ -7,6 +7,7 @@ var Ping = function(opt) {
     this.opt = opt || {};
     this.favicon = this.opt.favicon || "/favicon.ico";
     this.timeout = this.opt.timeout || 0;
+    this.logError = this.opt.logError || false;
 };
 
 /**
@@ -16,13 +17,23 @@ var Ping = function(opt) {
  * @param timeout Optional number of milliseconds to wait before aborting.
  */
 Ping.prototype.ping = function(source, callback) {
-    this.img = new Image();
+    var self = this;
+    self.wasSuccess=false;
+    self.img = new Image();
     var timer;
 
     var start = new Date();
-    this.img.onload = pingCheck;
-    this.img.onerror = pingCheck;
-    if (this.timeout) { timer = setTimeout(pingCheck, this.timeout); }
+    self.img.onload = {
+		self.wasSuccess=true;
+		if (!self.timeout) pingCheck.call(self,e); // discard the successful event if self.timeout is used. Because it responded after the timeout expiry.
+	};
+    self.img.onerror = function(e) {
+		self.wasSuccess=false;
+		if (!self.timeout) pingCheck.call(self,e);
+	};
+    if (self.timeout) { timer = setTimeout(function(){
+		pingCheck.call(self,event); // event is undefined here, as is expected. 
+	}, self.timeout); }
 
     /**
      * Times ping and triggers callback.
@@ -32,15 +43,15 @@ Ping.prototype.ping = function(source, callback) {
         var pong = new Date() - start;
 
         if (typeof callback === "function") {
-            if (e.type === "error") {
-                console.error("error loading resource");
+            if (!this.wasSuccess) { // e.type === "error" equivalent. But safer, since when operating in timeout mode, the timeout callback doesn't pass [event] as e. Notice [this] instead of [self], since .call() was used with context
+                if (self.logError) console.error("error loading resource");
                 return callback("error", pong);
             }
             return callback(null, pong);
         }
     }
 
-    this.img.src = source + this.favicon + "?" + (+new Date()); // Trigger image load with cache buster
+    self.img.src = source + self.favicon + "?" + (+new Date()); // Trigger image load with cache buster
 };
 
 if (typeof exports !== "undefined") {

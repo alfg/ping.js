@@ -18,33 +18,42 @@ var Ping = function(opt) {
  */
 Ping.prototype.ping = function(source, callback) {
     var self = this;
-    self.wasSuccess=false;
+    self.wasSuccess = false;
     self.img = new Image();
-    var timer;
+    self.img.onload = onload;
+    self.img.onerror = onerror;
 
+    var timer;
     var start = new Date();
-    self.img.onload = {
-		self.wasSuccess=true;
-		if (!self.timeout) pingCheck.call(self,e); // discard the successful event if self.timeout is used. Because it responded after the timeout expiry.
-	};
-    self.img.onerror = function(e) {
-		self.wasSuccess=false;
-		if (!self.timeout) pingCheck.call(self,e);
-	};
-    if (self.timeout) { timer = setTimeout(function(){
-		pingCheck.call(self,event); // event is undefined here, as is expected. 
-	}, self.timeout); }
+
+    function onload(e) {
+        self.wasSuccess = true;
+        pingCheck.call(self, e);
+    }
+
+    function onerror(e) {
+        self.wasSuccess = false;
+        pingCheck.call(self, e);
+    }
+
+    if (self.timeout) {
+        timer = setTimeout(function() {
+            pingCheck.call(self, undefined);
+    }, self.timeout); }
+
 
     /**
      * Times ping and triggers callback.
      */
-    function pingCheck(e) {
+    function pingCheck() {
         if (timer) { clearTimeout(timer); }
         var pong = new Date() - start;
 
         if (typeof callback === "function") {
-            if (!this.wasSuccess) { // e.type === "error" equivalent. But safer, since when operating in timeout mode, the timeout callback doesn't pass [event] as e. Notice [this] instead of [self], since .call() was used with context
-                if (self.logError) console.error("error loading resource");
+            // When operating in timeout mode, the timeout callback doesn't pass [event] as e.
+            // Notice [this] instead of [self], since .call() was used with context
+            if (!this.wasSuccess) {
+                if (self.logError) { console.error("error loading resource"); }
                 return callback("error", pong);
             }
             return callback(null, pong);

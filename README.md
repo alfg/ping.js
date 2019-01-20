@@ -36,6 +36,12 @@ $ npm install ping.js
 import Ping from 'ping.js';
 ```
 
+or use the [jsdelivr](https://www.jsdelivr.com) CDN:
+
+```html
+<script src="https://cdn.jsdelivr.net/gh/alfg/ping.js@0.2.2/dist/ping.min.js" type="text/javascript"></script>
+```
+
 See [demo/react-example](demo/react-example) for an example in React.
 
 ## API

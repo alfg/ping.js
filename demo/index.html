@@ -23,7 +23,11 @@
     <script src="https://gist.github.com/alfg/c44d8b061972879c9121.js"></script>
 
     <script>
-      var p = new Ping();
+      var settings = {
+        timeout: 2000, // Optional.
+        logError: true // Optional.
+      }
+      var p = new Ping(settings);
 
       p.ping("http://google.com", function(err, data) {
         // Also display error if err is returned.

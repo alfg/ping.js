@@ -3,7 +3,9 @@
 [![npm](https://img.shields.io/npm/v/ping.js.svg)](https://www.npmjs.com/package/ping.js)
 [![npm](https://img.shields.io/npm/dt/ping.js.svg)](https://www.npmjs.com/package/ping.js)
 
-Ping.js is a small and simple Javascript library to ping response times to servers in pure Javascript! This is useful for when you want to display realtime ping times on a status page which are relative to the user.
+Ping.js is a small and simple Javascript library to ping response times to web servers in Javascript! This is useful for when you want to display realtime ping times on a status page which are relative to the user.
+
+See [Notes](#notes) below for how this works.
 
 JS Fiddle Example: http://jsfiddle.net/alfg/sr0tpn4x/
 
@@ -89,7 +91,7 @@ Open `demo/index.html` in a browser to test results.
 
 ## Notes
 
-Javscript itself doesn't have a native way of sending a "ping", so results may not be completely accurate. Since ajax requests are affected by cross-domain issues (CORS), they are blocked by default. `ping.js` is using a method of loading a favicon.ico image from any host and timing the response time. If the favicon image doesn't exist, an error is returned along with the ping value. If there's a better way to do this in Javascript, feel free to create an issue, or pull request so I can review.
+Javascript itself doesn't have a native way of sending a "ping", so results may not be completely accurate. Since xhr requests are affected by cross-domain issues (CORS), they are blocked by default. `ping.js` is using a method of loading a favicon.ico image from any host and timing the response time. If the favicon image doesn't exist, an error is returned along with the ping value. If there's a better way to do this in Javascript, feel free to create an issue, or pull request so I can review.
 
 ## License
 

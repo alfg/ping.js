@@ -3,7 +3,7 @@
 [![npm](https://img.shields.io/npm/v/ping.js.svg)](https://www.npmjs.com/package/ping.js)
 [![npm](https://img.shields.io/npm/dt/ping.js.svg)](https://www.npmjs.com/package/ping.js)
 
-Ping.js is a small and simple Javascript library to ping response times to web servers in Javascript! This is useful for when you want to display realtime ping times on a status page which are relative to the user.
+Ping.js is a small and simple Javascript library for the browser to "ping" response times to web servers in Javascript! This is useful for when you want to display realtime ping times on a status page which are relative to the user.
 
 See [Notes](#notes) below for how this works.
 
@@ -12,6 +12,8 @@ JS Fiddle Example: http://jsfiddle.net/alfg/sr0tpn4x/
 Example in jQuery: http://jsfiddle.net/alfg/xjqbvt2o/
 
 ## Usage
+
+This module is for the browser only as it depends on the brower's `Image` API.
 
 * Download the distribution files in `dist` to your project.
 

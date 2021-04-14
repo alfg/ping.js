@@ -20,6 +20,7 @@ This module is for the browser only as it depends on the brower's `Image` API.
 ```javascript
 var p = new Ping();
 
+// Using callback
 p.ping("https://github.com", function(err, data) {
   // Also display error if err is returned.
   if (err) {
@@ -28,6 +29,15 @@ p.ping("https://github.com", function(err, data) {
   }
   document.getElementById("ping-github").innerHTML = data;
 });
+
+// You may use Promise if the browser supports ES6
+p.ping("https://github.com")
+  .then(data => {
+    console.log("Successful ping: " + data);
+  })
+  .catch(data => {
+    console.error("Ping failed: " + data);
+  })
 ```
 
 or import as a module:
@@ -58,21 +68,18 @@ var p = new Ping(opt);
 
 Create Ping instance.
 
-#### options
-Type: `Object`
+#### `options`
 
-`favicon` Override the default `favicon.ico` image location.
-
-`timeout` Optional - Set a timeout in milliseconds.
+* Type: `Object`
+* `favicon`: Override the default `favicon.ico` image location.
+* `timeout`: Optional - Set a timeout in milliseconds.
 
 ### p.ping(source, callback)
 
-Creates a ping request to the `source`.
+Creates a ping request to the `source`. Returns a promise that resolves and rejects to the response time in milliseconds, or if the browser does not supports Promise, returns undefined.
 
-`source` IP address or website URL, including protocol and port (optional). Example: `https://example.com:8080`
-
-`callback(err, ping)` Callback function which returns an error and the response time in milliseconds.
-
+* `source`: IP address or website URL, including protocol and port (optional). Example: `https://example.com:8080`
+* `callback(err, ping)`: Optional - Callback function which returns an error and the response time in milliseconds.
 
 ## Development
 
